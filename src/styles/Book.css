@@ -1,0 +1,9 @@
+.list-item {
+  list-style-type: none;
+  font-weight: bold;
+  display: inline;
+}
+
+.grid {
+  text-align: center;
+}

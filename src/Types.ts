@@ -12,5 +12,4 @@ export interface IBookList {
   bookAuthor: string;
   bookDescription: string;
   bookReleaseDate: string;
-  books?: IBook[];
 }

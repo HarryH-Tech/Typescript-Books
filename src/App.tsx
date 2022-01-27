@@ -36,8 +36,8 @@ const App: FC = () => {
     <div className="App">
       <Header />
       <div>
-        <AddBook setBookList={setBookList} />
-        <BookList books={bookList} />
+        <AddBook bookList={bookList} setBookList={setBookList} />
+        {bookList && <BookList setBookList={setBookList} books={bookList} />}
       </div>
       <div className="book-list"></div>
     </div>
