@@ -1,12 +1,31 @@
 import React, { FC } from 'react';
 import '../styles/Header.css';
 
-import Button from '@mui/material/Button';
-import Box from '@mui/material/Box';
-import TextField from '@mui/material/TextField';
+import { AppBar, Box } from '@mui/material';
 
 const Header: FC = () => {
-  return <>Header</>;
+  return (
+    <>
+      <Box
+        sx={{
+          flexGrow: 1,
+          textAlign: 'center',
+          marginBottom: '3rem',
+        }}
+      >
+        <AppBar
+          position="static"
+          sx={{
+            display: 'flex',
+            height: '10vh',
+            justifyContent: 'center',
+          }}
+        >
+          <h1>Book List</h1>
+        </AppBar>
+      </Box>
+    </>
+  );
 };
 
 export default Header;

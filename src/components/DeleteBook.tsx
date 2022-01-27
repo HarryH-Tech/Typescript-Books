@@ -1,5 +1,6 @@
 import React, { FC, MouseEvent } from 'react';
 import { IBook, IBookList } from '../Types';
+import Button from '@mui/material/Button';
 
 type Props = {
   bookList: IBookList[];
@@ -10,15 +11,19 @@ type Props = {
 const DeleteBook: FC<Props> = ({ bookList, setBookList, id }): JSX.Element => {
   const deleteBook = (e: MouseEvent, bookId: number) => {
     e.preventDefault();
-    console.log(bookId);
     setBookList(bookList.filter((book) => book.bookId !== bookId));
   };
 
   return (
     <>
-      <button onClick={(event) => deleteBook(event, id)}>
-        Delete Book{id}{' '}
-      </button>
+      <Button
+        sx={{ m: 2 }}
+        variant="outlined"
+        color="error"
+        onClick={(event) => deleteBook(event, id)}
+      >
+        Delete Book
+      </Button>
     </>
   );
 };

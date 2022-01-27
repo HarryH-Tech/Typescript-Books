@@ -1,5 +1,8 @@
-import React, { FC } from 'react';
+import React, { FC, MouseEvent, useState } from 'react';
 import DeleteBook from './DeleteBook';
+import EditBook from './EditBook';
+import Button from '@mui/material/Button';
+
 import { IBook, IBookList } from '../Types';
 import '../styles/Book.css';
 
@@ -24,6 +27,13 @@ const Book: FC<Props> = ({
   bookList,
   setBookList,
 }) => {
+  const [openEditModal, setOpenEditModal] = useState(false);
+
+  const openModal = (e: MouseEvent) => {
+    e.preventDefault();
+    setOpenEditModal(true);
+  };
+
   return (
     <>
       <Container>
@@ -57,7 +67,35 @@ const Book: FC<Props> = ({
             <p>{description}</p>
           </div>
           <Divider />
-          <DeleteBook id={id} bookList={bookList} setBookList={setBookList} />
+          <div
+            style={{
+              display: 'flex',
+              justifyContent: 'center',
+            }}
+          >
+            <DeleteBook id={id} bookList={bookList} setBookList={setBookList} />
+            <Button
+              sx={{ m: 2 }}
+              onClick={(event) => openModal(event)}
+              variant="outlined"
+              color="success"
+            >
+              Edit Book
+            </Button>
+            {openEditModal && (
+              <EditBook
+                id={id}
+                title={title}
+                author={author}
+                description={description}
+                releaseDate={releaseDate}
+                bookList={bookList}
+                setBookList={setBookList}
+                openEditModal={openEditModal}
+                setOpenEditModal={setOpenEditModal}
+              />
+            )}
+          </div>
         </Box>
       </Container>
     </>

@@ -4,6 +4,7 @@ import '../styles/AddBook.css';
 import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
+import Alert from '@mui/material/Alert';
 
 import { IBook, IBookList } from '../Types';
 
@@ -15,28 +16,44 @@ type Props = {
 const AddBook: FC<Props> = ({ bookList, setBookList }): JSX.Element => {
   console.log(bookList);
   const [book, setBook] = useState<IBook>({
-    id: Math.random(),
+    id: 0,
     title: '',
     author: '',
     description: '',
     releaseDate: '',
   });
+  const [errorMessage, setErrorMessage] = useState('');
+
+  const { id, title, author, description, releaseDate } = book;
 
   const handleInputChange = (event: ChangeEvent<HTMLInputElement>): void => {
+    setErrorMessage('');
     setBook({ ...book, [event.target.name]: event.target.value });
-    console.log(book);
   };
 
   const addBook = (): void => {
-    const newBook = {
-      bookId: Math.random(),
-      bookTitle: book.title,
-      bookAuthor: book.author,
-      bookDescription: book.description,
-      bookReleaseDate: book.releaseDate,
-    };
+    if (!title || !author || !description || !releaseDate) {
+      setErrorMessage(
+        'Please ensure all fields are filled in before adding your book.'
+      );
+    } else {
+      const newBook = {
+        bookId: Math.random(),
+        bookTitle: title,
+        bookAuthor: author,
+        bookDescription: description,
+        bookReleaseDate: releaseDate,
+      };
+      setBookList([...bookList, newBook]);
 
-    setBookList([...bookList, newBook]);
+      setBook({
+        id: 0,
+        title: '',
+        author: '',
+        description: '',
+        releaseDate: '',
+      });
+    }
   };
 
   return (
@@ -72,6 +89,7 @@ const AddBook: FC<Props> = ({ bookList, setBookList }): JSX.Element => {
           type="number"
           placeholder="Release Year"
         />
+        {errorMessage && <Alert severity="error">{errorMessage}</Alert>}
         <div className="button-container">
           <Button onClick={addBook} variant="contained" className="form-button">
             Add Book
