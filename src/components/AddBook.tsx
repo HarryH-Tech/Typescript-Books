@@ -1,4 +1,4 @@
-import React, { FC, useState, ChangeEvent } from 'react';
+import { FC, useState, Dispatch, SetStateAction, ChangeEvent } from 'react';
 import '../styles/AddBook.css';
 
 import Button from '@mui/material/Button';
@@ -10,7 +10,7 @@ import { IBook, IBookList } from '../Types';
 
 type Props = {
   bookList: IBookList[];
-  setBookList: React.Dispatch<React.SetStateAction<any>>;
+  setBookList: Dispatch<SetStateAction<any>>;
 };
 
 const AddBook: FC<Props> = ({ bookList, setBookList }): JSX.Element => {
@@ -23,6 +23,7 @@ const AddBook: FC<Props> = ({ bookList, setBookList }): JSX.Element => {
     releaseDate: '',
   });
   const [errorMessage, setErrorMessage] = useState('');
+  const [successMessage, setSuccessMessage] = useState('');
 
   const { id, title, author, description, releaseDate } = book;
 
@@ -37,6 +38,8 @@ const AddBook: FC<Props> = ({ bookList, setBookList }): JSX.Element => {
         'Please ensure all fields are filled in before adding your book.'
       );
     } else {
+      setSuccessMessage('Book successfully added! 😊');
+
       const newBook = {
         bookId: Math.random(),
         bookTitle: title,
@@ -45,6 +48,10 @@ const AddBook: FC<Props> = ({ bookList, setBookList }): JSX.Element => {
         bookReleaseDate: releaseDate,
       };
       setBookList([...bookList, newBook]);
+
+      setTimeout(() => {
+        setSuccessMessage('');
+      }, 5000);
 
       setBook({
         id: 0,
@@ -86,10 +93,19 @@ const AddBook: FC<Props> = ({ bookList, setBookList }): JSX.Element => {
           name="releaseDate"
           value={book.releaseDate}
           onChange={handleInputChange}
-          type="number"
+          type="date"
           placeholder="Release Year"
         />
-        {errorMessage && <Alert severity="error">{errorMessage}</Alert>}
+        {errorMessage && (
+          <Alert severity="error" className="alert-message">
+            {errorMessage}
+          </Alert>
+        )}
+        {successMessage && (
+          <Alert severity="success" className="alert-message">
+            {successMessage}
+          </Alert>
+        )}
         <div className="button-container">
           <Button onClick={addBook} variant="contained" className="form-button">
             Add Book

@@ -1,12 +1,18 @@
-import React, { FC, MouseEvent, useState } from 'react';
+import React, {
+  FC,
+  Dispatch,
+  MouseEvent,
+  SetStateAction,
+  useState,
+} from 'react';
 import DeleteBook from './DeleteBook';
 import EditBook from './EditBook';
 import Button from '@mui/material/Button';
 
-import { IBook, IBookList } from '../Types';
+import { IBookList } from '../Types';
 import '../styles/Book.css';
 
-import { Container, Typography, Box, Grid, List, Divider } from '@mui/material';
+import { Container, Typography, Box, Grid, Divider } from '@mui/material';
 import { v4 as uuidv4 } from 'uuid';
 
 type Props = {
@@ -16,7 +22,7 @@ type Props = {
   bookDescription: string;
   bookReleaseDate: string;
   bookList: IBookList[];
-  setBookList: React.Dispatch<React.SetStateAction<any>>;
+  setBookList: Dispatch<SetStateAction<any>>;
 };
 
 const Book: FC<Props> = ({
@@ -37,16 +43,8 @@ const Book: FC<Props> = ({
 
   return (
     <>
-      <Container>
-        <Box
-          sx={{
-            bgcolor: '#fafafa',
-
-            borderRadius: '2rem',
-            marginBottom: '1rem',
-            padding: '1rem',
-          }}
-        >
+      <Container className="container">
+        <Box>
           <Typography align="center" variant="h5" className="title">
             {bookTitle}
           </Typography>

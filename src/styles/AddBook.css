@@ -4,8 +4,16 @@
   gap: 1rem;
   width: 75%;
   margin: auto;
+  background-color: #fff;
+
+  border-radius: 1rem;
+  padding: 1.5rem;
 }
 
 .button-container {
   margin: 2rem;
+}
+
+.alert-message {
+  margin: auto;
 }

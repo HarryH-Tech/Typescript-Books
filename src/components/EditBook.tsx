@@ -92,7 +92,7 @@ const EditBook: FC<Props> = ({
         />
         <TextField
           className="input"
-          maxRows={5}
+          multiline={true}
           name="description"
           value={book.description}
           onChange={handleInputChange}

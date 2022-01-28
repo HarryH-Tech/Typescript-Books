@@ -1,3 +1,15 @@
+.container {
+  background-color: #fafafa;
+  border-radius: 2rem;
+  margin-bottom: 1rem;
+  padding: 1rem;
+  transition: box-shadow 0.5s;
+}
+
+.container:hover {
+  box-shadow: 0.3rem 0.3rem 0.2rem #000;
+}
+
 .list-item {
   list-style-type: none;
   font-weight: bold;

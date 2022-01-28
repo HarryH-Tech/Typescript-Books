@@ -1,18 +1,15 @@
-import React, { FC, useState } from 'react';
+import React, { FC, Dispatch, useState, SetStateAction } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 
 import { IBookList, IBook } from '../Types';
-
 import Book from './Book';
 
-const BookList = (props: {
+type Props = {
   books: IBookList[];
-  setBookList: React.Dispatch<React.SetStateAction<any>>;
-}) => {
-  console.log(props.books);
+  setBookList: Dispatch<SetStateAction<any>>;
+};
 
-  const { books, setBookList } = props;
-
+const BookList: FC<Props> = ({ books, setBookList }) => {
   return (
     <>
       {books &&

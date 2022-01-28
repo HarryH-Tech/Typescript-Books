@@ -7,14 +7,13 @@
   background-color: #a1ddff;
   border: 2px solid #000;
   border-radius: 1rem;
-
   padding: 2rem;
   text-align: center;
 }
 
 .input {
   width: 100%;
-  margin: 1.2rem auto !important;
+  margin: 1rem auto !important;
 }
 
 .button-container {
@@ -24,4 +23,8 @@
 
 .button {
   margin: 1rem !important;
+}
+
+.description {
+  height: 100%;
 }
