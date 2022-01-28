@@ -96,6 +96,7 @@ const AddBook: FC<Props> = ({ bookList, setBookList }): JSX.Element => {
           </Button>
         </div>
       </Box>
+      <br />
     </>
   );
 };

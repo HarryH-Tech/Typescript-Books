@@ -41,19 +41,19 @@ const Book: FC<Props> = ({
         <Box
           sx={{
             bgcolor: '#fafafa',
-            height: '30vh',
+
             borderRadius: '2rem',
             marginBottom: '1rem',
             padding: '1rem',
           }}
         >
-          <Typography align="center" variant="h5">
+          <Typography align="center" variant="h5" className="title">
             {bookTitle}
           </Typography>
           <Grid container className="grid">
             <Grid item xs={6}>
               <ul className="list-item">
-                <li>Author: {bookAuthor}</li>
+                <li>Author(s): {bookAuthor}</li>
               </ul>
             </Grid>
             <Grid item xs={6}>
@@ -63,7 +63,7 @@ const Book: FC<Props> = ({
             </Grid>
           </Grid>
           <Divider />
-          <div>
+          <div className="summary-container">
             <h3>Summary</h3>
             <p>{bookDescription}</p>
           </div>

@@ -7,3 +7,12 @@
 .grid {
   text-align: center;
 }
+
+.title {
+  text-decoration: underline;
+}
+
+.summary-container {
+  text-align: justify;
+  text-align-last: center;
+}

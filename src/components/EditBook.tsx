@@ -62,18 +62,15 @@ const EditBook: FC<Props> = ({
       bookReleaseDate: book.releaseDate,
     };
 
-    let p = bookList.map((bookq) => {
-      if (bookq.bookId === bookId) {
-        console.log(book);
+    let newBookList = bookList.map((book) => {
+      if (book.bookId === bookId) {
         return newBook;
       }
-      console.log(bookq);
-      return bookq;
+
+      return book;
     });
 
-    console.log(p);
-
-    setBookList(p);
+    setBookList(newBookList);
     setOpenEditModal(false);
   };
 
@@ -95,6 +92,7 @@ const EditBook: FC<Props> = ({
         />
         <TextField
           className="input"
+          maxRows={5}
           name="description"
           value={book.description}
           onChange={handleInputChange}
