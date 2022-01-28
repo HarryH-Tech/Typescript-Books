@@ -1,4 +1,5 @@
 import React, { FC, useState } from 'react';
+import { v4 as uuidv4 } from 'uuid';
 
 import { IBookList, IBook } from '../Types';
 
@@ -18,13 +19,14 @@ const BookList = (props: {
         books.map((book) => {
           return (
             <Book
-              id={book.bookId}
-              author={book.bookAuthor}
-              title={book.bookTitle}
-              description={book.bookDescription}
-              releaseDate={book.bookReleaseDate}
+              bookId={book.bookId}
+              bookAuthor={book.bookAuthor}
+              bookTitle={book.bookTitle}
+              bookDescription={book.bookDescription}
+              bookReleaseDate={book.bookReleaseDate}
               bookList={books}
               setBookList={setBookList}
+              key={uuidv4()}
             />
           );
         })}

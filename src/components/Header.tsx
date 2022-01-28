@@ -2,6 +2,7 @@ import React, { FC } from 'react';
 import '../styles/Header.css';
 
 import { AppBar, Box } from '@mui/material';
+import { v4 as uuidv4 } from 'uuid';
 
 const Header: FC = () => {
   return (
@@ -12,6 +13,7 @@ const Header: FC = () => {
           textAlign: 'center',
           marginBottom: '3rem',
         }}
+        key={uuidv4()}
       >
         <AppBar
           position="static"
@@ -20,8 +22,9 @@ const Header: FC = () => {
             height: '10vh',
             justifyContent: 'center',
           }}
+          key={uuidv4()}
         >
-          <h1>Book List</h1>
+          <h1 key={uuidv4()}>Book List</h1>
         </AppBar>
       </Box>
     </>

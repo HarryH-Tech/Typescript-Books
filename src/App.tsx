@@ -32,6 +32,7 @@ const App: FC = () => {
     },
   ]);
 
+  console.log(bookList);
   return (
     <div className="App">
       <Header />
