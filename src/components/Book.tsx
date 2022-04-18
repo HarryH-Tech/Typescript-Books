@@ -74,16 +74,17 @@ const Book: FC<Props> = ({
           >
             <DeleteBook
               id={bookId}
+              bookTitle={bookTitle}
               bookList={bookList}
               setBookList={setBookList}
-              key={uuidv4()}
+     
             />
             <Button
               sx={{ m: 2 }}
               onClick={(event) => openModal(event)}
               variant="outlined"
               color="success"
-              key={uuidv4()}
+         
             >
               Edit Book
             </Button>

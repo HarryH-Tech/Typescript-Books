@@ -43,16 +43,6 @@ const EditBook: FC<Props> = ({
   };
 
   const updateBook = (event: MouseEvent<HTMLButtonElement>) => {
-    // event.preventDefault();
-    // const updatedBook = bookList.filter((book) => book.bookId === id);
-
-    // const newBook = {
-    //   bookId: Math.random(),
-    //   bookTitle: title,
-    //   bookAuthor: author,
-    //   bookDescription: description,
-    //   bookReleaseDate: releaseDate,
-    // };
 
     const newBook = {
       bookId: bookId,
